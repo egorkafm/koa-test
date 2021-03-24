@@ -1,0 +1,53 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="./index.js"></script>
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.rawgit.com/prashantchaudhary/ddslick/master/jquery.ddslick.min.js"
+    ></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="./index.js"></script>
+    
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <section style="max-width: 300px; padding: 50px;">
+      <nav>
+        <ul>
+          <li><a href="./sign in.html">Block Sign in</a></li>
+          <li><a href="./sign up.html">Block Sign up</a></li>
+          <li><a href="./profile.html">Block Profile</a></li>
+          <li><a href="./search.html">Block Search</a></li>
+          <li><a href="#">Block Admin zone in process...</a></li>
+        </ul>
+      </nav>
+    </section>
+    {% block signIn %} {% endblock %}
+    {% block passwordRecovery1 %} {% endblock %}
+    {% block passwordRecovery2 %} {% endblock %}
+    {% block passwordRecovery3 %} {% endblock %}
+
+    {% block signUp1 %} {% endblock %}
+    {% block signUp2 %} {% endblock %}
+    {% block signUp3 %} {% endblock %}
+    {% block signUp4 %} {% endblock %}
+    {% block signUp5 %} {% endblock %}
+    {% block signUp6 %} {% endblock %}
+
+    {% block profilePersonal %} {% endblock %}
+    {% block profileAccount %} {% endblock %}
+
+    {% block searchResults %} {% endblock %}
+    {% block searchMap %} {% endblock %}
+  </body>
+</html>

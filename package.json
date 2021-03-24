@@ -1,0 +1,32 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon ./app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-nunjucks": "^5.1.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.1.0",
+    "koa": "^2.13.1",
+    "koa-render": "^0.2.1",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^7.0.1",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.7",
+    "nunjucks": "^3.2.3",
+    "sass-lint": "^1.13.1",
+    "sass-lint-auto-fix": "^0.21.2"
+  }
+}

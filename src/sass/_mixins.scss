@@ -1,0 +1,24 @@
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin bp-960 {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin bp-768 {
+  @media (max-width: 768px) {
+    @content;
+  } 
+}
+
+@mixin bp-460 {
+  @media (max-width: 460px) {
+    @content;
+  }
+}
