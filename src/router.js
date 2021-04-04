@@ -5,6 +5,8 @@ const controllers = require('./controller');
 const router = new Router();
 
 router.get('base', controllers.base);
+router.get('user/:userId', controllers.base);
+router.post('user', controllers.createUser);
 router.get('signIn', controllers.signIn);
 router.get('signUp', controllers.signUp);
 router.get('profile', controllers.profile);

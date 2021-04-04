@@ -1,12 +1,45 @@
 const Koa = require('koa');
 const path = require('path');
 const Router = require('koa-router');
+const Redis = require('ioredis');
 const views = require('koa-views');
 const serve = require('koa-static');
-const globalRouter = require('./src/router');
+const bodyParser = require('koa-bodyparser');
+const { Pool } = require('pg');
 const nunjucks = require('nunjucks');
+const globalRouter = require('./src/router');
+
+// const pool = new Pool ({
+//   user: 'empty-user',
+//   host: 'localhost',
+//   database: 'nothing',
+//   password: 'testpass',
+//   port: 5432,
+// });
+
+// pool.query('SELECT * FROM countries WHERE id = 2', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
 
 const app = new Koa();
+
+// const redis = new Redis('redis://localhost:6379');
+
+// app.context.redis = redis;
+
+app.use(bodyParser());
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    if (err.isJoi) {
+      ctx.throw(400, err.details[0].message);
+    }
+    console.log(err);
+    // ctx.throw(400, 'Something wrong');
+  }
+});
 
 const router = new Router();
 
