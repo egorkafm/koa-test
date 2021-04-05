@@ -6,7 +6,7 @@ async function base(ctx) {
   const userResponse = await db.query(`SELECT * FROM "user" WHERE id = ${userId}`);
 
   // const userInRedis = await ctx.redis.get(userId);
-  console.log(JSON.parse(userInRedis));
+  // console.log(JSON.parse(userInRedis));
 
   if(!userResponse.rowCount) {
     ctx.throw(400, 'User doesn`t exist');
