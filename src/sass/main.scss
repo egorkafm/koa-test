@@ -457,7 +457,7 @@ li {
     font-size: 14px;
     line-height: 16px;
     @include bp-768 {
-      margin-right: 40px;
+      margin-right: 50px;
     }
     @include bp-460 {
       margin-left: 5px;
@@ -499,6 +499,7 @@ li {
   &__content {
     background-color: $bg-color;
     display: flex;
+    height: 100%;
     // min-height: 690px;
     // align-items: center;
   }
@@ -509,6 +510,7 @@ li {
     padding-top: 100px;
     @include bp-768 {
       min-width: 40px;
+      // display: none;
     }
     @include bp-460 {
       display: none;
@@ -527,10 +529,11 @@ li {
     // max-width: 1160px;
     //width: 1160px;
     // max-height: 572px;
-    margin: 60px auto;
+    // margin: 60px auto;
+    margin: 50px 0 0 50px;
     // max-width: 800px;
     @include bp-768 {
-      margin: 10px 0;
+      margin: 20px 0;
     }
     @include bp-460 {
       margin: 5px;
@@ -704,12 +707,17 @@ li {
 //! SEARCH
 .search {
   display: flex;
-  width: 100vw;
+  width: 86vw;
   // background-color: rgb(92, 228, 13);
   // width: 1095px;
-  padding: 20px 0;
+  padding: 20px;
+    @include bp-768 {
+    //   // margin: 0 15px 0 0;
+      padding: 10px;
+    }
   @include bp-460 {
     flex-wrap: wrap;
+    padding: 5px;
   }
   &__form {
     // max-width: 310px;
@@ -778,6 +786,7 @@ li {
     // }
     @include bp-460 {
       margin: 0 auto;
+      border-image: none;
     }
 
     &-header {
@@ -924,7 +933,6 @@ li {
   }
 }
 
-
 // radio
 .custom-radio {
   position: absolute;
@@ -1005,4 +1013,125 @@ li {
   // width="800" height="600"
 }
 
+//! ADMIN PAGE
 
+// .grid {
+//   display: grid;
+//   /* фолбэк для Safari */
+//   grid-template-columns: 100px 20% -webkit-min-content -webkit-max-content 1fr 2fr auto;
+//   /* для взрослых браузеров */
+//   grid-template-columns: 100px 20% min-content max-content 1fr 2fr auto;
+//   grid-template-rows: auto minmax(50px, 50vh) 5em;
+//   background: #F5F7FA;
+//   padding: 2px;
+//   grid-gap: 2px;
+//   animation: pulse 10s ease-in-out infinite alternate;
+//   font: 12px/1.25 sans-serif;
+// }
+
+.admin {
+  width: 86vw;
+  padding: 20px;
+  @include bp-768 {
+    padding: 10px;
+  }
+  @include bp-460 {
+    padding: 5px;
+  }
+  &__search {
+    display: block;
+    margin-left: auto;
+    padding: 15px 0 15px 25px;
+    // background: url("../img/Search.svg") no-repeat 3px 1px;
+    // background-size: auto 90%;
+    background-color: transparent;
+    background-image: url("../img/Search.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+  &__table {
+  width: 100%;
+  border: 1px solid #DAE4F2;
+  box-sizing: border-box;
+  box-shadow: -2px 9px 8px rgba(23, 31, 76, 0.03);
+  border-radius: 4px;
+  // padding: 50px;
+  // margin: 0 auto;
+  display: grid;  
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  // grid-template-rows: auto minmax(25px, 25vh) 5em;
+  // background-color: rgb(255, 255, 255);
+  // background-color: hotpink;
+    &-title {
+      background-color: rgba(245,247,250,1);
+      height: 42px;
+      line-height: 42px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: $title-dark;
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+    &-item {
+      background-color: rgb(255, 255, 255);
+      border-bottom: 1px solid gray;
+      padding: 15px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      height: 20px;
+      line-height: 20px;
+      color: #222428;
+      // @include bp-460 {
+      //   font-size: 8px;
+      //   height: 14px;
+      //   line-height: 14px;
+      // }
+      // &:last-child {
+      //   border-bottom: none;
+      // } 
+    }
+  }
+}
+
+.noBorder {
+  border: none;
+  outline: none;
+}
+// .item {
+//   background-color: rgb(255, 255, 255);
+//   border-bottom: 1px solid gray;
+//   padding: 15px;
+//   font-family: Roboto;
+//   font-style: normal;
+//   font-weight: 300;
+//   font-size: 14px;
+//   height: 20px;
+//   line-height: 20px;
+//   color: #222428;
+//   // @include bp-460 {
+//   //   font-size: 8px;
+//   //   height: 14px;
+//   //   line-height: 14px;
+//   // }
+// }
+// .title {
+//   background-color: rgba(245,247,250,1);
+//   height: 42px;
+//   line-height: 42px;
+//   font-family: Roboto;
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 12px;
+//   letter-spacing: 0.6px;
+//   text-transform: uppercase;
+//   color: $title-dark;
+//   padding: 0 10px;
+//   white-space: nowrap;
+// }
