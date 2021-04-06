@@ -38,20 +38,68 @@ async function createUser(ctx) {
   };
 }
 
-async function signIn(ctx) {
-  await ctx.render('signIn');
+async function signIn1(ctx) {
+  await ctx.render('signIn1');
+}
+
+async function signIn2(ctx) {
+  await ctx.render('signIn2');
+}
+
+async function signIn3(ctx) {
+  await ctx.render('signIn3');
+}
+
+async function signIn4(ctx) {
+  await ctx.render('signIn4');
 }
 
 async function signUp(ctx) {
   await ctx.render('signUp');
 }
 
-async function profile(ctx) {
-  await ctx.render('profile');
+async function signUp1(ctx) {
+  await ctx.render('signUp1');
 }
 
-async function search(ctx) {
-  await ctx.render('search');
+async function signUp2(ctx) {
+  await ctx.render('signUp2');
+}
+
+async function signUp3(ctx) {
+  await ctx.render('signUp3');
+}
+
+async function signUp4(ctx) {
+  await ctx.render('signUp4');
+}
+
+async function signUp5(ctx) {
+  await ctx.render('signUp5');
+}
+
+async function signUp6(ctx) {
+  await ctx.render('signUp6');
+}
+
+async function profilePersonal(ctx) {
+  await ctx.render('profilePersonal');
+}
+
+async function profileAccount(ctx) {
+  await ctx.render('profileAccount');
+}
+
+async function searchResults(ctx) {
+  await ctx.render('searchResults');
+}
+
+async function searchMap(ctx) {
+  await ctx.render('searchMap');
+}
+
+async function adminPage(ctx) {
+  await ctx.render('adminPage');
 }
 
 async function testIndex(ctx) {
@@ -66,10 +114,22 @@ async function index(ctx) {
 module.exports = {
   base,
   createUser,
-  signIn,
+  signIn1,
+  signIn2,
+  signIn3,
+  signIn4,
   signUp,
-  profile,
-  search,
+  signUp1,
+  signUp2,
+  signUp3,
+  signUp4,
+  signUp5,
+  signUp6,
+  profilePersonal,
+  profileAccount,
+  searchResults,
+  searchMap,
+  adminPage,
   testIndex,
   index,
 };

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block signIn %}
+<section class="container">
+  <div class="header__content">
+    <div class="header__logo"><img src="./img/Group.svg" alt="logo"/><span> </span><img src="./img/Group 81.svg" alt="logo text"/></div>
+    <div class="header__login">Do not have an account? 
+      <button class="header__btn">Sign up</button>
+    </div>
+  </div>
+  <div class="form__main">
+    <div class="form__content">
+      <div class="form__title">Sign in</div>
+      <form action="#" method="POST">
+        <input class="form__imp" type="email" placeholder="sarah@"/>
+        <input class="form__imp" type="password" placeholder="Password"/>
+      </form>
+      <p class="form__text">Forgot password?</p>
+      <button class="form__btn">Sign in</button>
+    </div>
+  </div>
+</section>
+{% endblock %}

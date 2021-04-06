@@ -9,6 +9,9 @@ $title-dark: rgba(1, 19, 78, 1);
   padding: 0;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
+  select {
+    background-color: rgb(255, 255, 255);
+  }
 }
 // body {
 //   width: 100vw;
@@ -35,20 +38,21 @@ li {
 }
 
 .container {
-  max-width: 1440px;
-  // height: 100%;
+  // max-width: 1440px;
+  // width: 100vw;
+  // height: 100vh;
   margin: 0 auto;
   background-color: $bg-color;
-  @include bp-960 {
-    max-width: 960px;
-  }
-  @include bp-768 {
-    max-width: 768px;
-  }
-  @include bp-460 {
-    max-width: 100%;
-    overflow: hidden;
-  }
+  // @include bp-960 {
+  //   max-width: 960px;
+  // }
+  // @include bp-768 {
+  //   max-width: 768px;
+  // }
+  // @include bp-460 {
+  //   max-width: 100%;
+  //   overflow: hidden;
+  // }
 }
 
 .header {
@@ -118,11 +122,14 @@ li {
 
 .form {
   &__main {
-    max-width: 632px;
+    // max-width: 632px;
     margin: 0 auto;
     // height: 100%;
     background-color: $bg-color;
-    padding: 150px 0px;
+    padding: 150px 200px;
+    @include bp-960 {
+      padding: 150px 100px;
+    }
     @include bp-768 {
       padding: 100px 0px;
     }
@@ -131,7 +138,7 @@ li {
     }
   }
   &__content {
-    max-width: 454px;
+    // max-width: 454px;
     // min-height: 100%;
     margin: 0 auto;
     padding: 75px 115px;
@@ -161,7 +168,8 @@ li {
   }
 
   &__imp {
-    min-width: 381px;
+    // min-width: 381px;
+    width: 100%;
     height: 40px;
     margin: 25px 0 0 0;
     display: block;
@@ -177,16 +185,17 @@ li {
 
   &__imp-half {
     display: inline-block;
-    min-width: 175.5px;
-    margin: 25px 6px 0 0;
+    // min-width: 175.5px;
+    width: 48%;
+    margin: 25px 7px 0 0;
     @include bp-768 {
-      //min-width: 96%;
-      min-width: 220px;
-      margin: 25px 20px 0 0;
+      min-width: 100%;
+      // min-width: 220px;
+      // margin: 25px 20px 0 0;
     }
-    @include bp-460 {
-      min-width: 94%;
-    }
+    // @include bp-460 {
+    //   min-width: 94%;
+    // }
   }
   &__imp:focus {
     outline: none;
@@ -204,7 +213,7 @@ li {
   }
 
   &__btn {
-    float: right;
+    margin-left: auto;
     width: 190px;
     height: 40px;
     background-color: rgba(10, 214, 156, 1);
@@ -213,7 +222,7 @@ li {
     color: white;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-weight: 600;
     font-size: 16px;
     line-height: 19px;
@@ -262,13 +271,12 @@ li {
     text-decoration: none;
     color: $title-color;
   }
-  // &__password-reloader {
-  //   text-align: center;
-  // }
+  &__password-reloader {
+    width: 100%;
+    text-align: center;
+  }
   &__password-reloader img {
-    @include bp-768 {
-      width: 32%;
-    }
+    width: 32%;
   }
 }
 .form__circle-small {
@@ -407,15 +415,19 @@ li {
     background-color: rgba(1, 19, 78, 1);
     min-width: 80px;
     text-align: center;
-    @include bp-460 {
+    padding: 10px 0;
+    @include bp-768 {
       min-width: 40px;
+    }
+    @include bp-460 {
+      min-width: 25px;
+      padding: 5px;
     }
   }
   &__links {
-    max-width: 1360px;
+    // max-width: 1360px;
     flex: 50%;
     flex-wrap: nowrap;
-
     margin-left: 60px;
     @include bp-768 {
       margin-left: 20px;
@@ -487,7 +499,7 @@ li {
   &__content {
     background-color: $bg-color;
     display: flex;
-    min-height: 690px;
+    // min-height: 690px;
     // align-items: center;
   }
   &__nav {
@@ -495,8 +507,11 @@ li {
     min-width: 80px;
     text-align: center;
     padding-top: 100px;
-    @include bp-460 {
+    @include bp-768 {
       min-width: 40px;
+    }
+    @include bp-460 {
+      display: none;
     }
     li {
       margin-top: 50px;
@@ -509,10 +524,10 @@ li {
   &__item {
     background-color: rgb(255, 255, 255);
     // background-color: rgb(13, 160, 228);
-    max-width: 1160px;
+    // max-width: 1160px;
     //width: 1160px;
     // max-height: 572px;
-    margin: 60px;
+    margin: 60px auto;
     // max-width: 800px;
     @include bp-768 {
       margin: 10px 0;
@@ -530,6 +545,9 @@ li {
     font-weight: 700;
     text-align: center;
     margin: 50px;
+    a {
+      display: block;
+    }
     @include bp-768 {
       margin: 30px 10px;
     }
@@ -560,9 +578,11 @@ li {
   }
   &__info {
     display: flex;
-    // justify-content: space-between;
+    justify-content: space-between;
+    // background-color: #80bdff;
     @include bp-768 {
       margin-top: 30px;
+      display: block;
     }
     @include bp-460 {
       margin-top: 20px;
@@ -570,7 +590,7 @@ li {
     }
   }
   &__photo {
-    padding: 50px 30px;
+    padding: 80px;
     text-align: center;
     // background-color: rgba(10, 214, 156, 1);
     @include bp-768 {
@@ -591,7 +611,7 @@ li {
     cursor: pointer;
   }
   &__form {
-    width: 70%;
+    width: 75%;
     // background-color: rgba(10, 214, 156, 1);
     // width: 100%;
     padding: 10px 0 0 10px;
@@ -627,6 +647,7 @@ li {
   }
   &__imp {
     min-width: 280px;
+    // width: 100%;
     height: 40px;
     margin: 20px 30px 20px 0;
     font-size: 14px;
@@ -683,6 +704,7 @@ li {
 //! SEARCH
 .search {
   display: flex;
+  width: 100vw;
   // background-color: rgb(92, 228, 13);
   // width: 1095px;
   padding: 20px 0;
@@ -690,7 +712,8 @@ li {
     flex-wrap: wrap;
   }
   &__form {
-    max-width: 310px;
+    // max-width: 310px;
+    flex: 25%;
     @include bp-960 {
       // min-width: 100%;
       // background-color: red;
@@ -701,7 +724,7 @@ li {
     // }
     @include bp-460 {
       // margin: 15px 0 15px 0;
-      min-width: 100%;
+      flex: 100%;
     }
     // background-color: red;
     form {
@@ -741,6 +764,7 @@ li {
     // max-width: 850px;
     // min-width: 804px;
     // min-width: 90%;
+    flex: 70%;
     margin-left: 45px;
     // background-color: rgb(200, 20, 255);
     border: 1px solid transparent;
@@ -761,9 +785,10 @@ li {
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-between;
+      align-items: center;
       // background-color: tomato;
-      max-width: 804px;
-
+      // padding: 5px 0;
+      // max-width: 804px;
       form {
         display: inline-block;
         // white-space: nowrap;
@@ -776,7 +801,7 @@ li {
     &-btn {
       color: $title-dark;
       background-color: rgb(255, 255, 255);
-      margin-left: 20px;
+      margin: 0 15px 0 20px;
       outline: none;
       border: none;
       font-size: 12px;
@@ -793,8 +818,10 @@ li {
       flex-wrap: wrap;
       justify-content: space-between;
       flex: 50%;
+      padding: 50px;
       @include bp-960 {
-        flex: 100%;
+        // flex: 100%;
+        padding: 20px;
         // background-color: red;
       }
       // @include bp-768 {
@@ -808,21 +835,25 @@ li {
     }
     &-card {
       display: flex;
-      flex: 40%;
-      padding: 20px;
+      flex: 45%;
+      // margin: 0 auto;
+      // padding: 20px;
       background-color: #ffffff;
       box-shadow: -2px 9px 30px rgba(23, 31, 76, 0.02);
       // min-width: 330px;
-      margin: 10px;
+      margin: 20px 10px;
       @include bp-960 {
-        flex: 100%;
-        margin-left: 15px;
-        justify-content: center;
+        // flex: 100%;
+        // margin-left: 15px;
+        // justify-content: center;
         // margin: 0 0 0 0;
       }
-      // @include bp-768 {
-      //   margin: 20px;
-      // }
+      @include bp-768 {
+        flex: 100%;
+        margin: 10px;
+        // display: block;
+        // text-align: center;
+      }
       @include bp-460 {
         // display: block;
         justify-content: center;
@@ -875,13 +906,13 @@ li {
     }
   }
   &__map {
-    @include bp-960 {
-      width: 800px;
-    }
-    @include bp-768 {
-      // margin: 0 15px 0 0;
-      width: 760px;
-    }
+    // @include bp-960 {
+    //   width: 800px;
+    // }
+    // @include bp-768 {
+    //   // margin: 0 15px 0 0;
+    //   width: 760px;
+    // }
     @include bp-460 {
       // margin: 15px 0 15px 0;
       display: block;
@@ -904,7 +935,7 @@ li {
   display: inline-flex;
   align-items: center;
   user-select: none;
-  margin-right: 40px;
+  // margin-right: 40px;
 }
 .custom-radio + label::before {
   content: "";

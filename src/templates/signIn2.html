@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block passwordRecovery1 %}
+<section class="container">
+  <div class="header__content">
+    <div class="header__logo"><img src="./img/Group.svg" alt="logo"/><span> </span><img src="./img/Group 81.svg" alt="logo text"/></div>
+    <div class="header__login">Back to
+      <button class="header__btn">Sign in</button>
+    </div>
+  </div>
+  <div class="form__main">
+    <div class="form__content">
+      <div class="form__title">Enter your e-mail to reset your password</div>
+      <form action="#" method="POST">
+        <input class="form__imp" type="email" placeholder="E-mail"/>
+      </form><br/>
+      <button class="form__btn mt-20px">Send</button><br/>
+    </div>
+  </div>
+</section>
+{% endblock %}
