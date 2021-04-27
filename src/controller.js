@@ -12,9 +12,13 @@ async function base(ctx) {
     ctx.throw(400, 'User doesn`t exist');
   }
 
-  const name = userResponse.rows[0].fname;
+  const user = userResponse.rows[0];
+  ctx.body = {
+    user,
+  };
+  // const name = userResponse.rows[0].fname;
 
-  await ctx.render('base', { name });
+  // await ctx.render('base', { name });
 }
 
 async function createUser(ctx) {

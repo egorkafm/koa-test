@@ -7,6 +7,7 @@ const serve = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 const { Pool } = require('pg');
 const nunjucks = require('nunjucks');
+const cors = require('@koa/cors');
 const globalRouter = require('./src/router');
 
 // const pool = new Pool ({
@@ -23,6 +24,8 @@ const globalRouter = require('./src/router');
 // })
 
 const app = new Koa();
+
+app.use(cors());
 
 // const redis = new Redis('redis://localhost:6379');
 
