@@ -114,6 +114,16 @@ async function index(ctx) {
   await ctx.render('index');
 }
 
+async function userList(ctx) {
+  const userListResponse = await db.query('SELECT * FROM "user"');
+
+  const users = userListResponse.rows;
+
+  ctx.body = {
+    users,
+  };
+}
+
 module.exports = {
   base,
   createUser,
@@ -135,4 +145,5 @@ module.exports = {
   adminPage,
   testIndex,
   index,
+  userList,
 };
