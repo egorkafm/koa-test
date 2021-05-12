@@ -40,7 +40,7 @@ app.use(async (ctx, next) => {
       ctx.throw(400, err.details[0].message);
     }
     console.log(err);
-    // ctx.throw(400, 'Something wrong');
+    ctx.throw(err.status || 500, err.message);
   }
 });
 

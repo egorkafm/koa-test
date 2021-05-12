@@ -1,9 +1,10 @@
+const crypto = require('crypto');
 const db = require('./db/db');
 const validator = require('./validator');
 
 async function base(ctx) {
   const { userId } = ctx.request.params;
-  const userResponse = await db.query(`SELECT * FROM "user" WHERE id = ${userId}`);
+  const userResponse = await db.query(`SELECT * FROM "user" WHERE id = '${userId}'`);
 
   // const userInRedis = await ctx.redis.get(userId);
   // console.log(JSON.parse(userInRedis));
@@ -26,21 +27,47 @@ async function createUser(ctx) {
 
   await validator.schema.validateAsync(body);
   
+  body.password = crypto.pbkdf2Sync(body.password, 'salt', 100000, 64, 'sha256').toString('hex');
   // console.log(body);
 
-  const createUserResponse = await db.query(`INSERT INTO "user" (fname, lname, isActive) VALUES ('${body.fname}', '${body.lname}', ${body.active}) RETURNING *`);
+  const createUserResponse = await db.query(`INSERT INTO "user" (fname, lname, isActive, password, email) VALUES ('${body.fname}', '${body.lname}', ${body.active}, '${body.password}', '${body.email}') RETURNING *`);
 
   const user = { ...createUserResponse.rows[0] };
   
   // await ctx.redis.set(user.id, JSON.stringify(user));
 
-  ctx.status =201;
+  ctx.status = 201;
   ctx.body = {
     id: user.id,
     fname: user.fname,
     lname: user.lname,
+    email: user.email,
   };
 }
+
+async function signIn(ctx) {
+  const { body } = ctx.request;
+  
+  body.password = crypto.pbkdf2Sync(body.password, 'salt', 100000, 64, 'sha256').toString('hex');
+
+  const userResponse = await db.query(`SELECT * FROM "user" WHERE email = '${body.email}'`);
+
+  if (!userResponse.rowCount) {
+    ctx.throw(400, `User with email: ${body.email} doesn\`t exist`);
+  }
+  
+  
+  const user = { ...userResponse.rows[0] };
+  
+  ctx.status = 200;
+  ctx.body = {
+    id: user.id,
+    email: user.email,
+    fname: user.fname,
+    lname: user.lname,
+    authrized: true,
+  };
+};
 
 async function signIn1(ctx) {
   await ctx.render('signIn1');
@@ -127,6 +154,7 @@ async function userList(ctx) {
 module.exports = {
   base,
   createUser,
+  signIn,
   signIn1,
   signIn2,
   signIn3,

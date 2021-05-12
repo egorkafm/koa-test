@@ -8,6 +8,7 @@ router.get('base', controllers.base);
 router.get('user/:userId', controllers.base);
 router.post('user', controllers.createUser);
 router.get('signIn1', controllers.signIn1);
+router.post('signIn', controllers.signIn);
 router.get('signIn2', controllers.signIn2);
 router.get('signIn3', controllers.signIn3);
 router.get('signIn4', controllers.signIn4);
