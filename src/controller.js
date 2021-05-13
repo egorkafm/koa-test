@@ -1,6 +1,10 @@
 const crypto = require('crypto');
+const passport = require('koa-passport');
+const jwt = require('jwt-simple');
+const { TRUE } = require('node-sass');
 const db = require('./db/db');
 const validator = require('./validator');
+const { UserDB } = require('./models/user/UserDB');
 
 async function base(ctx) {
   const { userId } = ctx.request.params;
@@ -46,28 +50,54 @@ async function createUser(ctx) {
 }
 
 async function signIn(ctx) {
-  const { body } = ctx.request;
-  
-  body.password = crypto.pbkdf2Sync(body.password, 'salt', 100000, 64, 'sha256').toString('hex');
-
-  const userResponse = await db.query(`SELECT * FROM "user" WHERE email = '${body.email}'`);
-
-  if (!userResponse.rowCount) {
-    ctx.throw(400, `User with email: ${body.email} doesn\`t exist`);
-  }
-  
-  
-  const user = { ...userResponse.rows[0] };
-  
-  ctx.status = 200;
-  ctx.body = {
-    id: user.id,
-    email: user.email,
-    fname: user.fname,
-    lname: user.lname,
-    authrized: true,
-  };
+  await passport.authenticate('local', (err, user) => {
+    if (user) {
+      ctx.body = user;
+    } else {
+      ctx.status = 400;
+      if (err) {
+        ctx.body = { error: err };
+      }
+    }
+  })(ctx);
 };
+
+async function profile(ctx) {
+  ctx.body = {
+    success: true,
+  };
+}
+
+async function refresh(ctx) {
+  const token = ctx.headers.authorization.split(' ')[1];
+  const decodedToken = jwt.decode(token, 'super_secret_refresh');
+
+  if (decodedToken.expiresIn <= new Date().getTime()) {
+    const error = new Error('Refresh token expired, please sign in into your account.');
+    error.status = 400;
+
+    throw error;
+  }
+
+  // const user = userResponse.rows[0];
+  const user = await UserDB.getUserByEmail(decodedToken.email);
+
+  const accessToken = {
+    id: user.id,
+    expiresIn: new Date().setTime(new Date().getTime() + 200000),
+  };
+  const refreshToken = {
+    email: user.email,
+    expiresIn: new Date().setTime(new Date().getTime() + 1000000),
+  };
+
+  ctx.body = {
+    accessToken: jwt.encode(accessToken, 'super_secret'),
+    accessTokenExpirationDate: accessToken.expiresIn,
+    refreshToken: jwt.encode(refreshToken, 'super_secret_refresh'),
+    refreshTokenExpirationDate: refreshToken.expiresIn,
+  };
+}
 
 async function signIn1(ctx) {
   await ctx.render('signIn1');
@@ -154,6 +184,8 @@ async function userList(ctx) {
 module.exports = {
   base,
   createUser,
+  profile,
+  refresh,
   signIn,
   signIn1,
   signIn2,

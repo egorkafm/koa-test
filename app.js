@@ -9,6 +9,9 @@ const { Pool } = require('pg');
 const nunjucks = require('nunjucks');
 const cors = require('@koa/cors');
 const globalRouter = require('./src/router');
+const passport = require('./src/libs/passport/koaPassport');
+
+passport.initialize();
 
 // const pool = new Pool ({
 //   user: 'empty-user',
@@ -38,6 +41,9 @@ app.use(async (ctx, next) => {
   } catch (err) {
     if (err.isJoi) {
       ctx.throw(400, err.details[0].message);
+    }
+    if (err.isPassport) {
+      ctx.throw(400, err.message);
     }
     console.log(err);
     ctx.throw(err.status || 500, err.message);

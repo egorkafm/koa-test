@@ -1,4 +1,5 @@
 const Router = require('koa-router');
+const passport = require('koa-passport');
 
 const controllers = require('./controller');
 
@@ -9,6 +10,8 @@ router.get('user/:userId', controllers.base);
 router.post('user', controllers.createUser);
 router.get('signIn1', controllers.signIn1);
 router.post('signIn', controllers.signIn);
+router.get('profile', passport.authenticate('jwt', { session: false }), controllers.profile)
+router.get('refresh/token', controllers.refresh)
 router.get('signIn2', controllers.signIn2);
 router.get('signIn3', controllers.signIn3);
 router.get('signIn4', controllers.signIn4);
